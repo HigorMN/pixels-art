@@ -5,11 +5,11 @@
 }
 
 body {
+  font-family: 'Oswald', sans-serif;
   text-align: center;
 }
 
 #title {
-  font-family: 'Oswald', sans-serif;
   font-size: 70px;
   padding-bottom: 50px;
 }
@@ -23,7 +23,7 @@ body {
   display: inline-block;
   width: 40px;
   height: 40px;
-  padding: 15px;
+  padding: 10px;
   margin: 10px;
 }
 
@@ -49,11 +49,21 @@ body {
 }
 
 .pixel {
-  background-color: white;
   border: 1px solid black;
   display: inline-block;
   height: 40px;
   width: 40px;
-  margin-bottom: -4px;
-  padding: 15px;
+  margin-bottom: -5px;
+  padding: 10px;
+}
+
+.white {
+  background-color: white;
+}
+
+#clear-board {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
 }

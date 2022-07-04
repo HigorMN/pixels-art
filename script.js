@@ -4,12 +4,12 @@ function createPixel(pixel, borda) {
 
   for (let index = 0; index < pixel; index++) {
     let createDiv = document.createElement('div');
-    createDiv.className = 'pixel';
+    createDiv.className = 'pixel white';
     pixelBord.appendChild(createDiv);
   }
 }
 
-createPixel(25, '360px');
+createPixel(25, '310px');
 
 function colorSelected() {
   let colorsSelected = document.getElementsByClassName('color selected');
@@ -41,20 +41,38 @@ function pixelCores() {
   let pixelClass = document.getElementsByClassName('pixel');
   for (let index = 0; index < pixelClass.length; index += 1) {
     pixelClass[index].addEventListener('click', function (event) {
-        if (colorsSelected.black) {
-            event.target.id = 'black'
-        }
-        if (colorsSelected.red) {
-            event.target.id = 'red'
-        }
-        if (colorsSelected.blue) {
-            event.target.id = 'blue'
-        }
-        if (colorsSelected.green) {
-            event.target.id = 'green'
-        }
+      if (colorsSelected.black) {
+        event.target.id = 'black';
+        event.target.className = 'pixel';
+      }
+      if (colorsSelected.red) {
+        event.target.id = 'red';
+        event.target.className = 'pixel';
+      }
+      if (colorsSelected.blue) {
+        event.target.id = 'blue';
+        event.target.className = 'pixel';
+      }
+      if (colorsSelected.green) {
+        event.target.id = 'green';
+        event.target.className = 'pixel';
+      }
     });
   }
 }
 
-pixelCores()
+pixelCores();
+
+function clearLimp() {
+  let clearButton = document.querySelector('#clear-board');
+
+  clearButton.addEventListener('click', function () {
+    let pixelClass = document.getElementsByClassName('pixel');
+    for (let index = 0; index < pixelClass.length; index += 1) {
+      pixelClass[index].className = 'pixel white';
+      pixelClass[index].id = '';
+    }
+  });
+}
+
+clearLimp();
