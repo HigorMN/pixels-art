@@ -9,4 +9,4 @@ function createPixel(pixel, borda) {
   }
 }
 
-createPixel(25, '410px');
+createPixel(25, '360px');
