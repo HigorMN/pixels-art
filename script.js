@@ -68,6 +68,7 @@ function clearLimp() {
   clearButton.addEventListener('click', function () {
     const pixelClass = document.getElementsByClassName('pixel');
     for (let index = 0; index < pixelClass.length; index += 1) {
+      pixelClass[index].style.backgroundColor = 'white';
       pixelClass[index].className = 'pixel white';
       pixelClass[index].id = '';
     }
@@ -79,21 +80,18 @@ clearLimp();
 function pixelCreate() {
   const boxNumber = document.getElementById('board-size');
   const buttonVQV = document.getElementById('generate-board');
-
   buttonVQV.addEventListener('click', function () {
     const calc = boxNumber.value * boxNumber.value;
-    const soma = 62 * boxNumber.value
-    if (calc >= 25) {
+    const soma = 62 * boxNumber.value;
+    if (calc >= 2500) {
+      removePixel();
+      createPixel(2500, '3100px');
+      pixelCores();
+    } else if (calc >= 25) {
       removePixel();
       createPixel(calc, `${soma}px`);
       pixelCores();
-    } 
-    if(calc >= 2500){
-      removePixel();
-      createPixel(2500, '3100px')
-      pixelCores();
-    }
-    else {
+    } else {
       alert('Board inválido!');
     }
   });
@@ -105,3 +103,44 @@ function removePixel() {
   const pixelBord = document.getElementById('pixel-board');
   pixelBord.innerHTML = '';
 }
+
+window.onload = function () {
+  const letters = '0123456789ABCDEF';
+  let color1 = '#';
+  let color2 = '#';
+  let color3 = '#';
+
+  for (let i = 0; i < 6; i++) {
+    color1 += letters[Math.floor(Math.random() * 16)];
+    color2 += letters[Math.floor(Math.random() * 16)];
+    color3 += letters[Math.floor(Math.random() * 16)];
+  }
+
+  console.log(color1, color2, color3);
+  const allColors = document.getElementsByClassName('color');
+  for (let index = 0; index < allColors.length; index += 1) {
+    allColors[1].id = 'cor1';
+    allColors[2].id = 'cor2';
+    allColors[3].id = 'cor3';
+    allColors[1].style.backgroundColor = color1;
+    allColors[2].style.backgroundColor = color2;
+    allColors[3].style.backgroundColor = color3;
+  }
+  const pixelClass = document.getElementsByClassName('pixel');
+  for (let index = 0; index < pixelClass.length; index += 1) {
+    pixelClass[index].addEventListener('click', function (event) {
+      if (colorsSelected.cor1) {
+        event.target.style.backgroundColor = color1;
+        event.target.className = 'pixel';
+      }
+      if (colorsSelected.cor2) {
+        event.target.style.backgroundColor = color2;
+        event.target.className = 'pixel';
+      }
+      if (colorsSelected.cor3) {
+        event.target.style.backgroundColor = color3;
+        event.target.className = 'pixel';
+      }
+    });
+  }
+};
