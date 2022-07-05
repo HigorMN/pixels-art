@@ -7,11 +7,13 @@
 body {
   font-family: 'Oswald', sans-serif;
   text-align: center;
+  background-image: url(https://img.freepik.com/free-vector/hand-painted-background-colourful-palette_23-2148427585.jpg?w=2000);
 }
 
 #title {
   font-size: 70px;
   padding-bottom: 50px;
+  color: indigo;
 }
 
 #color-palette {
@@ -23,8 +25,7 @@ body {
   display: inline-block;
   width: 40px;
   height: 40px;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
 }
 
 #black {

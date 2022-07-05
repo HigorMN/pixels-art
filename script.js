@@ -56,7 +56,6 @@ function pixelCores() {
         event.target.id = 'green';
         event.target.className = 'pixel';
       }
-      console.log(event);
     });
   }
 }
@@ -83,13 +82,18 @@ function pixelCreate() {
 
   buttonVQV.addEventListener('click', function () {
     const calc = boxNumber.value * boxNumber.value;
-    const acrecenta = 62;
-    const soma = acrecenta * boxNumber.value
-    if (calc >= 25 && calc <= 2500) {
+    const soma = 62 * boxNumber.value
+    if (calc >= 25) {
       removePixel();
       createPixel(calc, `${soma}px`);
       pixelCores();
-    } else {
+    } 
+    if(calc >= 2500){
+      removePixel();
+      createPixel(2500, '3100px')
+      pixelCores();
+    }
+    else {
       alert('Board inválido!');
     }
   });
