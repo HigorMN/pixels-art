@@ -91,6 +91,7 @@ function pixelCreate() {
       removePixel();
       createPixel(calc, `${soma}px`);
       pixelCores();
+      pixelV();
     } else {
       alert('Board inválido!');
     }
@@ -104,31 +105,18 @@ function removePixel() {
   pixelBord.innerHTML = '';
 }
 
-window.onload = function () {
-  const letters = '0123456789ABCDEF';
-  let color1 = '#';
-  let color2 = '#';
-  let color3 = '#';
-
-  for (let i = 0; i < 6; i++) {
-    color1 += letters[Math.floor(Math.random() * 16)];
-    color2 += letters[Math.floor(Math.random() * 16)];
-    color3 += letters[Math.floor(Math.random() * 16)];
-  }
-
-  console.log(color1, color2, color3);
-  const allColors = document.getElementsByClassName('color');
-  for (let index = 0; index < allColors.length; index += 1) {
-    allColors[1].id = 'cor1';
-    allColors[2].id = 'cor2';
-    allColors[3].id = 'cor3';
-    allColors[1].style.backgroundColor = color1;
-    allColors[2].style.backgroundColor = color2;
-    allColors[3].style.backgroundColor = color3;
-  }
+let color1 = '#';
+let color2 = '#';
+let color3 = '#';
+let color0 = 'black';
+function pixelV() {
   const pixelClass = document.getElementsByClassName('pixel');
   for (let index = 0; index < pixelClass.length; index += 1) {
     pixelClass[index].addEventListener('click', function (event) {
+      if (colorsSelected.cor0) {
+        event.target.style.backgroundColor = 'black';
+        event.target.className = 'pixel';
+      }
       if (colorsSelected.cor1) {
         event.target.style.backgroundColor = color1;
         event.target.className = 'pixel';
@@ -143,4 +131,31 @@ window.onload = function () {
       }
     });
   }
-};
+}
+
+pixelV();
+
+function windo() {
+  const letters = '0123456789ABCDEF';
+
+  for (let i = 0; i < 6; i++) {
+    color1 += letters[Math.floor(Math.random() * 16)];
+    color2 += letters[Math.floor(Math.random() * 16)];
+    color3 += letters[Math.floor(Math.random() * 16)];
+  }
+
+  console.log(color1, color2, color3);
+  const allColors = document.getElementsByClassName('color');
+  for (let index = 0; index < allColors.length; index += 1) {
+    allColors[0].id = 'cor0';
+    allColors[1].id = 'cor1';
+    allColors[2].id = 'cor2';
+    allColors[3].id = 'cor3';
+    allColors[0].style.backgroundColor = color0;
+    allColors[1].style.backgroundColor = color1;
+    allColors[2].style.backgroundColor = color2;
+    allColors[3].style.backgroundColor = color3;
+  }
+}
+
+window.onload = windo();
